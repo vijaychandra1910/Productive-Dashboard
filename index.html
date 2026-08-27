@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <!-- navbar -->
+      <nav>
+        <h1>Productivity Dashboard</h1>
+        <button id="dark-mode-btn">Dark mode</button>
+      </nav>
+
+      <!-- dashboard -->
+      <div id="dashboard-div">
+        <div id="weather-widget-div">
+          <div id="weather-location">📍Indore</div>
+          <h1 id="weather-temperature"></h1>
+          <div id="weather-humidity"></div>
+          <div id="weather-wind"></div>
+          <div id="weather-rain"></div>
+        </div>
+
+        <div id="time-date-widget-div">
+          <h1 id="time-widget"></h1>
+          <div id="date-widget"></div>
+          <div id="day-widget"></div>
+        </div>
+        <div class="dashboard-card" id="dashboard-todo-list">📝 Todo List</div>
+        <div class="dashboard-card" id="dashboard-daily-planner">
+          📆 Daily Planner
+        </div>
+        <div class="dashboard-card" id="dashboard-motivation-quote">
+          💪 Motivation Quote
+        </div>
+        <div class="dashboard-card" id="dashboard-pomodoro-timer">
+          🍅 Pomodoro Timer
+        </div>
+
+        <div
+          class="dashboard-card"
+          id="dashboard-daily-goals"
+          style="display: flex; flex-direction: column"
+        >
+          <div class="heading">🎯 Daily Goals</div>
+          <div id="daily-goals-status"></div>
+        </div>
+      </div>
+
+      <!-- todo List -->
+      <div id="todo-list-div" style="display: none">
+        <button id="todo-list-back-btn">Back to dashboard</button>
+
+        <form id="add-task-form">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="add-task-title" required />
+          <label for="description">Description</label>
+          <input type="text" name="description" id="add-task-desc" required />
+          <label for="category">Category</label>
+          <select name="category" id="add-task-category" required>
+            <option value="" selected disabled>Select a Category</option>
+            <option value="work/professional">Work / Professional</option>
+            <option value="health/wellness">Health / Wellness</option>
+            <option value="home/household">Home / Household</option>
+            <option value="hobbies/personal">Hobbies / Personal</option>
+            <option value="other">Other</option>
+          </select>
+          <button id="add-task-btn">Add Task</button>
+        </form>
+        <div>
+          <table id="todo-list-table">
+            <thead>
+              <tr>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Category</td>
+                <td>Is Important?</td>
+                <td>Completed?</td>
+                <td>Actions</td>
+              </tr>
+            </thead>
+            <tbody id="todo-list-tasks-render"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- daily planner -->
+      <div id="daily-planner-div" style="display: none">
+        <button id="daily-planner-back-btn">Back to dashboard</button>
+
+        <h1>Daily Planner</h1>
+        <form id="planner-form">
+          <label for="starting-time">Starting Time</label>
+          <input
+            type="time"
+            name="starting-time"
+            id="planner-starting-time"
+            required
+          />
+          <label for="ending-time">Ending Time</label>
+          <input
+            type="time"
+            name="ending-time"
+            id="planner-ending-time"
+            required
+          />
+          <label for="task-desc">Task</label>
+          <input type="text" name="task-desc" id="planner-task-desc" required />
+          <button type="submit" id="planner-submit-btn">Add Task</button>
+        </form>
+
+        <h3>Today's Schedule</h3>
+        <table>
+          <thead>
+            <tr>
+              <td>Time Slot</td>
+              <td>Tasks Description</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody id="planner-table-body"></tbody>
+        </table>
+      </div>
+
+      <!-- motivation-quote -->
+      <div id="motivation-quote-div" style="display: none">
+        <button id="motivation-back-btn">Back to dashboard</button>
+        <div id="motivation-quote"></div>
+        <div id="quote-author"></div>
+        <button id="new-quote-btn">New Quote</button>
+      </div>
+
+      <!-- pomodoro -->
+      <div id="pomodoro-div" style="display: none">
+        <button id="pomodoro-back-btn">Back to dashboard</button>
+        <div class="navigation">
+          <button id="pomodoro-nav-btn">Pomodoro</button>
+          <button id="pomodoro-short-break-btn">Short Break</button>
+        </div>
+        <div id="pomodoro-countdown">25:00</div>
+        <div id="pomodoro-current-session">Work Session</div>
+        <div class="control-btn">
+          <button id="pomodoro-start-btn">Start</button>
+          <button id="pomodoro-stop-btn">Stop</button>
+          <button id="pomodoro-reset-btn">Reset</button>
+        </div>
+      </div>
+
+      <!-- daily goals -->
+      <div id="daily-goals-div" style="display: none">
+        <button id="goals-back-btn">Back to dashboard</button>
+        <h1>Daily Goals</h1>
+
+        <form id="daily-goal-form">
+          <label for="goals">Enter your goals:</label>
+          <input type="text" name="goals" id="goal-form-input" />
+          <button type="submit">Add Goal</button>
+        </form>
+
+        <div id="goals-list-table">
+          <table>
+            <thead>
+              <tr>
+                <td>Your Daily Goal</td>
+                <td>Completed?</td>
+                <td>Actions</td>
+              </tr>
+            </thead>
+            <tbody id="goals-list-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="JS Files/todoList.js"></script>
+    <script type="module" src="JS Files/dailyPlanner.js"></script>
+    <script type="module" src="JS Files/dashboard.js"></script>
+    <script type="module" src="JS Files/motivationQuote.js"></script>
+    <script type="module" src="JS Files/pomodoro.js"></script>
+    <script type="module" src="JS Files/weatherWidget.js"></script>
+    <script type="module" src="JS Files/timeDateWidget.js"></script>
+    <script type="module" src="JS Files/dailyGoal.js"></script>
+  </body>
+</html>
